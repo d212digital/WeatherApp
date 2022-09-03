@@ -16,8 +16,14 @@
                        TextAlignment="Left"
                        FontSize="18" 
                        Height="30"
-                       Margin="5,5,0,0"/>
-            <TextBox/>
+                       Margin="0,5,0,0"/>
+            <TextBox   Text="Start Typing City"
+                       FontStyle="Oblique"
+                       TextAlignment="Center"
+                       FontSize="16" 
+                       Height="30"
+                       Margin="0,5,0,0"
+                       BorderThickness="1"/>
             <Button Margin="0,20"
                     Content="Search"
                     Foreground="#f4f4f8"
