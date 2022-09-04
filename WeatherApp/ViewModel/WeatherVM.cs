@@ -8,6 +8,7 @@ using WeatherApp.Model;
 using System.Security.RightsManagement;
 using WeatherApp.ViewModel.Helpers;
 using WeatherApp.ViewModel.Commands;
+using System.Collections.ObjectModel;
 
 namespace WeatherApp.ViewModel
 {
@@ -24,6 +25,8 @@ namespace WeatherApp.ViewModel
             }
 
         }
+
+        public ObservableCollection<City> Cities { get; set; }
 
         private CurrentConditions currentConditions;
         public CurrentConditions CurrentConditions
@@ -71,11 +74,18 @@ namespace WeatherApp.ViewModel
             }
 
             SearchCommand = new SearchCommand(this);
+            Cities = new ObservableCollection<City>();
         }
 
         public async void MakeQuery()
         {
             var cities = await AccuWeatherHelper.GetCities(Query);
+
+            Cities.Clear();
+            foreach(var city in cities)
+            {
+                Cities.Add(city);
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
