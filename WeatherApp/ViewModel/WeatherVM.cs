@@ -58,24 +58,24 @@ namespace WeatherApp.ViewModel
 
         public WeatherVM()
         {
-            if (DesignerProperties.GetIsInDesignMode(new System.Windows.DependencyObject()))
-            {
-                SelectedCity = new City
-                {
-                    LocalizedName = "New York"
-                };
-                CurrentConditions = new CurrentConditions
-                {
-                    WeatherText = "Partly Cloudy",
-                    Temperature = new Temperature
-                    {
-                        Metric = new Units
-                        {
-                            Value = "21"
-                        }
-                    }
-                };
-            }
+            //if (DesignerProperties.GetIsInDesignMode(new System.Windows.DependencyObject()))
+            //{
+            //    SelectedCity = new City
+            //    {
+            //       // LocalizedName = "New York"
+            //    };
+            //    CurrentConditions = new CurrentConditions
+            //    {
+            //        WeatherText = "Partly Cloudy",
+            //        Temperature = new Temperature
+            //        {
+            //            Metric = new Units
+            //            {
+            //                Value = "21"
+            //            }
+            //        }
+            //    };
+            //}
 
             SearchCommand = new SearchCommand(this);
             Cities = new ObservableCollection<City>();
@@ -83,6 +83,7 @@ namespace WeatherApp.ViewModel
 
         private async void GetCurrentConditions()
         {
+            if (string.IsNullOrWhiteSpace(SelectedCity.Key)) return;
             Query = string.Empty;        
             CurrentConditions = await AccuWeatherHelper.GetCurrentConditions(SelectedCity.Key);
             Cities.Clear();
