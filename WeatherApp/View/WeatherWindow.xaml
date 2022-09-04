@@ -21,16 +21,17 @@
                        FontSize="18" 
                        Height="30"
                        Margin="0,5,0,0"/>
-            <TextBox   Text="{Binding Query, Mode=TwoWay}"
+            <TextBox   Text="{Binding Query, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                        TextAlignment="Center"
                        FontSize="16" 
                        Height="30"
-                       Margin="0,5,0,0"
+                       Padding="2,2,2,2"
                        BorderThickness="1"/>
             <Button Margin="0,20"
+                    Command="{Binding SearchCommand}"
+                    CommandParameter="{Binding Query}"
                     Content="Search"
-                    Foreground="#f4f4f8"
-                    Background="#1e90ff"
+                    Background="#4392f1"
                     FontSize="20"/>
             <ListView>
                 <ListView.ItemTemplate>
